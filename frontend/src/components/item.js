@@ -1,10 +1,11 @@
-function Item(){
-    return (
-        <div>
-            <div className="itemName">Ese nim</div>
-            <div className="itemPrice">100</div>
-            <div className="itemCategory">Mobiles</div>
-        </div>
-    )
+function Item(props) {
+  return (
+    <div>
+      <div className="itemName">{props.name}</div>
+      <div className="itemPrice">{props.price}</div>
+      <div className="itemCategory">{props.category}</div>
+    </div>
+  )
 }
+
 export default Item;
