@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Navbar from './components/Navbar';
 import AddItem from './pages/AddItem';
+import AddCategory from './pages/AddCategory';
+import ViewCategory from './pages/ViewCategory';
 
 function App() {
   return (
@@ -17,6 +19,12 @@ function App() {
       </Route>
       <Route path='/add-item'>
         <AddItem />
+      </Route>
+      <Route path='/add-category'>
+        <AddCategory />
+      </Route>
+      <Route path='/view-category'>
+        <ViewCategory />
       </Route>
     </div>
   );
