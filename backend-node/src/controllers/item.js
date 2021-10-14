@@ -22,7 +22,19 @@ exports.createItem = async (req, res) => {
 }
 
 exports.updateItem = async (req, res) => {
+  const { id } = req.params;
 
+  const item = await Item.findOne({ _id: id })
+  if (!item) res.status(404).send("No item with that id found")
+
+  const { name, unused, color } = req.body;
+  if (name) item.name = name;
+  if (unused) item.unused = unused;
+  if (color) item.color = color;
+  item.quality++;
+  item.save();
+
+  res.status(200).send(`Successfully updated the following item: \n ${item}`)
 }
 
 exports.deleteItem = async (req, res) => {
