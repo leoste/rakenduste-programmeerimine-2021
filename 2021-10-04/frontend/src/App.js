@@ -11,6 +11,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Greetings name={"Raimo"}/>
       <Route path='/' exact>
         <Home />
       </Route>
