@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 const Greetings = ({ name }) => {
   const [counter, setCounter] = useState(0)
   const [info, setInfo] = useState("no info")
@@ -21,3 +23,5 @@ const Greetings = ({ name }) => {
     </>
   )
 }
+
+export default Greetings;

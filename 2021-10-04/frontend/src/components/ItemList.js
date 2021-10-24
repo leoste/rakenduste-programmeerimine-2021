@@ -1,4 +1,4 @@
-import Item from '../components/Item';
+import Item from './Item';
 
 function ItemList(props) {
   return(<div>

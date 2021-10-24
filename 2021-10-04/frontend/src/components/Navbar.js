@@ -5,7 +5,7 @@ function Navbar() {
   return(
     <div className="navbar">
       <Link to="/">
-        <img className="logo" src="webshio.png" alt=""/>
+        <img className="logo" src="embleem.jpg" alt=""/>
       </Link>
       <Link to="cart">
         <img className="cart" src="cart.svg" alt=""/>
