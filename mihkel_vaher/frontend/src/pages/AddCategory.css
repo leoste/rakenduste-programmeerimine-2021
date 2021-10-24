@@ -1,0 +1,14 @@
+.CategoryInput{
+    border: 12px darkred;
+}
+.catform{
+ display: flex;
+ padding: 25px;
+}
+.catform > *:not(:last-child) {
+  margin: 10px; 
+}
+.catbutton{
+  margin: auto;
+  background-color: darkred !important;
+}

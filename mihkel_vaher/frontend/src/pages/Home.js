@@ -1,33 +1,37 @@
 import ItemList from '../components/ItemList';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import './Home.css';
 function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadedItems, setLoadedItems] = useState([]);
-  
-  useEffect(()=>{
-    fetch('http://localhost:8080/items').then(res => {
-      return res.json();
-    }).then(data =>{
-      console.log(data);
-      setIsLoading(false);
-      setLoadedItems(data);
-    });
-  },[])
+    const [isLoading, setIsLoading] = useState(true);
+    const [loadedItems,setLoadedItems] = useState([]);
 
-  if (isLoading) {
-    return (<div>Laeb...</div>); 
-  }
+    useEffect(()=>{
+        fetch('http://localhost:8080/items').then(res => {
+            return res.json();
+        }).then( data=> {
+            //console.log(data);
+            setIsLoading(false);
+            setLoadedItems(data);
+        });
+    },[])
+    if(isLoading){
+        return(<div>Is currently loading</div>);
+    }
 
-  return (
-    <div>
-      <Link to="add-item">
-        <button>Lisa uus ese</button>
-      </Link>
-      <ItemList items={loadedItems} />
-    </div>
-  )
+    return (
+        <div>
+            <Link to="add-item">
+            <button>🆒🆕Lisa uus ese🆓</button>
+            </Link>
+            <div className="esemed">
+                
+                <h2 className="eseh2">Esemed↔️</h2>
+                <ItemList items={loadedItems}/></div>
+            <div>
+                <img src="graphic.png" alt="" className="graphic" style={{height:150 + 'px'}}/>
+            </div>
+        </div>
+    )
 }
-
 export default Home;

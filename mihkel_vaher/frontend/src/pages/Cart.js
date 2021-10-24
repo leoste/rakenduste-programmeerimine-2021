@@ -1,9 +1,8 @@
-function Cart() {
-  return (
-    <div>
-     Ostukorv
-    </div>
-  )
+function Cart(){
+    return (
+        <div>
+            
+        </div>
+    )
 }
-
 export default Cart;

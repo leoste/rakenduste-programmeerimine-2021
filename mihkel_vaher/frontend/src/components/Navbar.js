@@ -1,22 +1,18 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-
-function Navbar() {
-  return(
-    <div className="navbar">
-      <Link to="/">
-        <img className="logo" src="embleem.jpg" alt=""/>
-      </Link>
-      <Link to="cart">
-        <img className="cart" src="cart.svg" alt=""/>
-      </Link>
-      <Link to="view-category">
-        <div className="viewcategory">Vaata kategooria</div>  
-      </Link> 
-    </div>
-  );
+function Navbar(){
+    return(
+        <div className="navbar">
+            <Link to="/">
+                <img src="embleem.jpg" alt="" className="logo"/>
+            </Link>
+            <Link to="cart">
+                <img src="cart.svg" alt="" className="cart"/>   
+            </Link>
+            <Link to="view-category">
+                <div className="viewcategory">Vaata kategooria</div>  
+            </Link> 
+        </div>
+    );
 }
-
-// alumine tehke ise
-
 export default Navbar;

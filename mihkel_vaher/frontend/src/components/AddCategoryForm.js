@@ -1,25 +1,24 @@
-import './AddCategoryForm.css';
-import { useRef } from 'react';
-
-function AddCategoryForm(props) {
-  const nameInputRef = useRef();
-  const priceInputRef = useRef();
-  const categoryInputRef = useRef();
-  function formSubmitHandler(e) {
-    e.preventDefault();
-    const nameValue = nameInputRef.current.value;
-    const priceValue = priceInputRef.current.value;
-    const categoryValue = categoryInputRef.current.value;
-    const category = {
-      name: nameValue,
-      price: priceValue,
-      category: categoryValue
+import {useRef} from 'react';
+function AddCategoryForm(props){
+    const nameInputRef = useRef();
+    const priceInputRef = useRef();
+    const categoryInputRef = useRef();
+    function formSubmitHandler(event){
+        event.preventDefault();
+        const nameValue = nameInputRef.current.value;
+        const priceValue = priceInputRef.current.value;
+        const categoryValue = categoryInputRef.current.value;
+        const item = {
+            name: nameValue,
+            price:  priceValue,
+            category: categoryValue
+        }
+        props.onAddItem(item);
     }
-    props.onAddCategory(category);
-  }
-
-  return (
-    <form onSubmit={formSubmitHandler}>
+    return(
+    <div>
+    <form className="catform" onSubmit={formSubmitHandler}>
+    <button className="catbutton">Sisesta uus ese</button>
         <label>Kategooria nimi</label><br/>
         <input type="text" placeholder="Nimi" required ref={nameInputRef}/><br/>
         <label>Eseme hind</label><br/>
@@ -30,9 +29,9 @@ function AddCategoryForm(props) {
             <option value="PREMIUM">PREMIUM</option>
             <option value="DELUXE">DELUXE</option>
         </select><br/>
-        <button>Sisesta uus ese</button>
+        
     </form>
-  );
+    </div>
+    )
 }
-
 export default AddCategoryForm;

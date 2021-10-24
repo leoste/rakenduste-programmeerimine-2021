@@ -6,13 +6,11 @@ import Navbar from './components/Navbar';
 import AddItem from './pages/AddItem';
 import AddCategory from './pages/AddCategory';
 import ViewCategory from './pages/ViewCategory';
-import Greetings from './components/Greetings';
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Greetings name={"Raimo"}/>
       <Route path='/' exact>
         <Home />
       </Route>
