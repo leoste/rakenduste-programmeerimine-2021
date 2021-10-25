@@ -1,13 +1,24 @@
-
-.categorylist{
-    display: flex;
-}
-.CategoryElement{
-    border: 5px navy;
-    background-color: khaki;
-    width: 150px;
-    margin: 10px;
-}
 .kats{
-    border: 10px solid navy;
+    margin-left: 2vh;
+    padding: 2vh;
+    background-color: navajowhite;
+    border-radius: 2vh;
+    border: 10px solid darkred; 
+}
+.CategoryElement {
+    margin: 2vh;
+    display: inline-block;
+    border-radius: 2vh;
+    border: 2vh solid navy;
+    background-color: navy;
+    color: navajowhite;
+}
+.categoryName{    
+    font-weight: bolder;
+}
+.categoryPrice{    
+    text-align: right;
+}
+.categoryType{
+    font-style: italic;
 }

@@ -20,13 +20,13 @@ function Home() {
     }
 
     return (
-        <div>
+        <div className="epic-container">
             <Link to="add-item">
-            <button>🆒🆕Lisa uus ese🆓</button>
+            <button>Lisa 👏 uus 👏 tuus 👏 ese 👏😤😤 💯💯💯</button>
             </Link>
             <div className="esemed">
                 
-                <h2 className="eseh2">Esemed↔️</h2>
+                <h2 className="eseh2">Esemed</h2>
                 <ItemList items={loadedItems}/></div>
             <div>
                 <img src="graphic.png" alt="" className="graphic" style={{height:150 + 'px'}}/>

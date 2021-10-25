@@ -1,16 +1,36 @@
+/*
+    numbers that are kinda constants:
+    1) navbar item height 10vh
+    2) navbar item margin 2vh
+*/
+
 .navbar {
     background-color: salmon;
-    height: 100px;
+    height: 14vh;
     display: flex;
     justify-content: flex-start;
-}
-.cart {
-    height: 50px;
-    margin: 50px;
+    width: 100;
+    position: relative;
 }
 .logo {
-    height: 80%;
-    margin-top: 10%;
-    margin-left: 10%;
-    
+    width: 10vh;
+}
+.cart {
+    width: 10vh;
+}
+.viewcategory {
+    border: 10px solid darkred;
+    border-radius: 10px;
+    color: navy;
+    font-size: 4vh;
+    background-color: khaki;
+    box-sizing: border-box;
+    width: calc(100vw - 10vh * 2 - 2vh * 6);
+    text-align: center;
+    padding-top: calc((10vh - 4vh * 2) / 2);
+}
+
+.logo, .viewcategory, .cart {
+    height: 10vh;
+    margin: 2vh;
 }

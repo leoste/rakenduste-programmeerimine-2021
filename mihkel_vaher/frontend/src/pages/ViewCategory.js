@@ -18,7 +18,7 @@ function ViewCategory(){
         return(<div>Is currently loading</div>);
     }
     return(
-        <div>
+        <div class="epic-container">
             <Link to="add-category">
                 <button>Lisa uus kategooria</button>
             </Link>
