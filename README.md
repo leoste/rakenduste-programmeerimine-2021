@@ -19,8 +19,6 @@ olen kasutanud ühtlustatud nuppude ja loetelude disaini, et leht oleks kohiivse
 
 - 4. kategooria lisamine
 ![image](https://user-images.githubusercontent.com/35530198/138672965-d74345b7-553c-430f-b007-f9d172dc1579.png)
-
-- 5. formi hover
 ![image](https://user-images.githubusercontent.com/35530198/138673201-198d7e99-cbfc-4930-a266-03cb8adf4916.png)
 
 asjade lisamisel on kasutusel hoopis teistsugune disainikeel teiste värvidega, et lehekülje teistsugune eesmärk oleks intuitiivselt arusaadav. kiire kiikega on võimalik juba aru saada, kas leht niisama näitab midagi, või ootab kasutaja-poolset tegutsemist.
