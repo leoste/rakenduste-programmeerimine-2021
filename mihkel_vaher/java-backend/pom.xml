@@ -8,13 +8,13 @@
         <version>2.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ee.mihkel</groupId>
-    <artifactId>backend</artifactId>
+    <groupId>com.grupp</groupId>
+    <artifactId>projekt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Backend</name>
-    <description>Demo project for Spring Boot</description>
+    <name>projekt</name>
+    <description>projekt</description>
     <properties>
-        <java.version>8</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
