@@ -11,7 +11,7 @@ function AddItem(){
     }
     return (
         <div>
-            <h1>Lisa uus eaase</h1>
+            <h1>Lisa 👏 uus 👏 tuus 👏 ese 👏😤😤 💯💯💯</h1>
             <AddItemForm onAddItem={itemSubmitHandler}/>
         </div>
     )

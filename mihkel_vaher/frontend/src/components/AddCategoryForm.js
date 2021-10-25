@@ -18,18 +18,17 @@ function AddCategoryForm(props){
     return(
     <div>
     <form className="catform" onSubmit={formSubmitHandler}>
-    <button className="catbutton">Sisesta uus ese</button>
-        <label>Kategooria nimi</label><br/>
-        <input type="text" placeholder="Nimi" required ref={nameInputRef}/><br/>
-        <label>Eseme hind</label><br/>
-        <input type="number" placeholder="Hind" required ref={priceInputRef}/><br/>
-        <label>Eseme Kategooria</label><br/>
+        <label>Kategooria nimi</label>
+        <input type="text" placeholder="Nimi" required ref={nameInputRef}/>
+        <label>Eseme hind</label>
+        <input type="number" placeholder="Hind" required ref={priceInputRef}/>
+        <label>Eseme Kategooria</label>
         <select required ref={categoryInputRef}>
             <option value="BASIC">BASIC</option>
             <option value="PREMIUM">PREMIUM</option>
             <option value="DELUXE">DELUXE</option>
-        </select><br/>
-        
+        </select>
+        <button className="catbutton">Sisesta uus kategooria</button>        
     </form>
     </div>
     )

@@ -2,13 +2,18 @@
     border: 12px darkred;
 }
 .catform{
- display: flex;
- padding: 25px;
-}
-.catform > *:not(:last-child) {
-  margin: 10px; 
-}
-.catbutton{
   margin: auto;
-  background-color: darkred !important;
+  width: 80vw;
+  border: 1px solid navy;
+  max-width: 600px;
+  min-width: 250px;
+}
+
+.CategoryInput{
+  text-align: center;  
+}
+.catform{
+  margin: auto;
+  width: 80vw;
+  border: 1px solid navy;
 }

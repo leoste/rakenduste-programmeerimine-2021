@@ -12,7 +12,7 @@ function AddCategory(props){
     }
     return(
         <div>
-            <h1>Lisa uus kateegroia</h1>
+            <h1>Lisa 🥱 uus 🙄 tuus 😳 kategooria 😖😖😖</h1>
             <div className="CategoryInput">
                 <AddCategoryForm onAddItem={categorySubmitHandler}/>
                 </div>

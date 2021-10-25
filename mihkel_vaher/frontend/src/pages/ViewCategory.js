@@ -20,7 +20,7 @@ function ViewCategory(){
     return(
         <div class="epic-container">
             <Link to="add-category">
-                <button>Lisa uus kategooria</button>
+                <button>Lisa 🥱 uus 🙄 tuus 😳 kategooria 😖😖😖</button>
             </Link>
             <div className="kats">
                 <h2>Kategooriad</h2>

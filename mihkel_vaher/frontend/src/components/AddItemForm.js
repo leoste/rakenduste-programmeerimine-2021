@@ -20,12 +20,12 @@ function AddItemForm(props){
     return(
     <div className="iteminput">
     <form className="itemform" onSubmit={formSubmitHandler}>
-        <label>Eseme nimi</label><br/>
-        <input type="text" placeholder="Nimi" required ref={nameInputRef}/><br/>
-        <label>Eseme hind</label><br/>
-        <input type="number" placeholder="Hind" required ref={priceInputRef}/><br/>
-        <label>Eseme Kategooria</label><br/>
-        <input type="text" placeholder="Kategooria" required ref={categoryInputRef}/><br/>
+        <label>Eseme nimi</label>
+        <input type="text" placeholder="Nimi" required ref={nameInputRef}/>
+        <label>Eseme hind</label>
+        <input type="number" placeholder="Hind" required ref={priceInputRef}/>
+        <label>Eseme Kategooria</label>
+        <input type="text" placeholder="Kategooria" required ref={categoryInputRef}/>
         <button className="nupp">Sisesta uus ese</button>
     </form>
     </div>
