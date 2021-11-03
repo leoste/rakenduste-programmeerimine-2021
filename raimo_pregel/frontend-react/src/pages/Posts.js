@@ -1,3 +1,4 @@
+import { Table } from "antd";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
 import { addPost, removePost, updatePosts } from "../store/actions";
@@ -58,6 +59,21 @@ function Posts() {
 
   console.log({ inputRef });
 
+  const dataSource = state.posts.data.map((e) => {
+    return {
+      key: e.id,
+      title: e.title
+    }
+  }) || [];
+
+  const columns = [
+    {
+      title: "Pealkiri :3",
+      dataIndex: "title",
+      key: "title"
+    }
+  ]
+
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Posts</h1>
@@ -70,19 +86,8 @@ function Posts() {
           autoFocus
         />
         <button type="submit">Submit</button>
-      </form>
-
-      {state.posts.data.map((e) => (
-        <li key={e.id}>
-          {e.id} {e.title}
-          <span
-            style={{ cursor: "pointer" }}
-            onClick={() => dispatch(removePost(e.id))}
-          >
-            &#128540;
-          </span>
-        </li>
-      ))}
+      </form>     
+      <Table dataSource={dataSource} columns={columns} />
     </div>
   );
 }
