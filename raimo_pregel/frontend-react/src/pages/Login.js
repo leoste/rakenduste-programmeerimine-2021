@@ -1,7 +1,7 @@
 import { Button, Input, Space, Table, Typography, Layout, Form } from "antd";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
-import { addPost, removePost, updateLogin } from "../store/actions";
+import { loginUser } from "../store/actions";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -15,28 +15,44 @@ function Login() {
     setUsername("");
     setPassword("");
 
-    addNewPost()
+    dispatch(loginUser(username, password));
 
     if (inputRef.current) inputRef.current.focus();
   };
 
-  const addNewPost = () => {
-    const newPost = {
-      id: Date.now(),
-      username,
-      password
-    };
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
 
-    // Salvestame andmebaasi ja kui on edukas, 
-    // siis teeme dispatchi ja uuendame state lokaalselt
+    setUsername("");
+    setPassword("");
 
-    dispatch(addPost(newPost));
+    // dispatch register user
+
+    if (inputRef.current) inputRef.current.focus();
   };
 
   return (
     <Layout>
+    <Typography.Title level="2">Tere tulemast tagasi!!!🥰🥰🥰</Typography.Title>
+    <Form onSubmit={handleSubmit}>
+      <Input
+        ref={inputRef}
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        autoFocus
+      />
+      <Input
+        ref={inputRef}
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        autoFocus
+      />
+      <Button type="submit">Submit</Button>
+    </Form>
       <Typography.Title level="2">Palun liitu meie saidiga 🥺🥺🥺🥺🥺</Typography.Title>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit2}>
         <Input
           ref={inputRef}
           type="text"
