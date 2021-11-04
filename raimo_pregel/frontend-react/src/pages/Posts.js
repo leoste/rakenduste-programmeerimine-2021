@@ -1,11 +1,12 @@
-import { Button, Input, Table, Typography } from "antd";
-import Form from "antd/lib/form/Form";
+import { Button, Input, Space, Table, Typography, Layout, Form } from "antd";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
 import { addPost, removePost, updatePosts } from "../store/actions";
 
 function Posts() {
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [date, setDate] = useState("");
   const [state, dispatch] = useContext(Context);
   const inputRef = useRef(null);
 
@@ -16,19 +17,27 @@ function Posts() {
     dispatch(updatePosts([
       {
         id: 1,
-        title: "Test-prefetched-array-1"
+        title: "Test-prefetched-array-1",
+        author: "Jon Snow",
+        date: new Date(2016, 11, 23)
       },
       {
         id: 2,
-        title: "Test-prefetched-array-2"
+        title: "Test-prefetched-array-2",
+        author: "Misato",
+        date: new Date(2017, 3, 5)
       },
       {
         id: 3,
-        title: "Test-prefetched-array-3"
+        title: "Test-prefetched-array-3",
+        author: "LLLL testttt",
+        date: new Date(2019, 8, 17)
       },
       {
         id: 4,
-        title: "Test-prefetched-array-4"
+        title: "Test-prefetched-array-4",
+        author: "yeah",
+        date: new Date(2019, 9, 19)
       },
     ]))
   }, [])
@@ -39,6 +48,8 @@ function Posts() {
     e.preventDefault();
 
     setTitle("");
+    setAuthor("");
+    setDate("");
 
     addNewPost()
 
@@ -50,6 +61,8 @@ function Posts() {
     const newPost = {
       id: Date.now(),
       title,
+      author,
+      date
     };
 
     // Salvestame andmebaasi ja kui on edukas, 
@@ -60,36 +73,59 @@ function Posts() {
 
   console.log({ inputRef });
 
-  const dataSource = state.posts.data.map((e) => {
-    return {
-      key: e.id,
-      title: e.title
-    }
-  }) || [];
+  const dataSource = state.posts.data.map(e => { return { ...e, date: e.date.toDateString() }; }) || [];
 
   const columns = [
     {
       title: "Pealkiri :3",
       dataIndex: "title",
       key: "title"
+    },
+    {
+      title: "Looja 🙏🙏🙏",
+      dataIndex: "author",
+      key: "author"
+    },
+    {
+      title: "Loodud",
+      dataIndex: "date",
+      key: "date"
     }
   ]
 
-  return (    
-    <div style={{ textAlign: "center" }}>
+  return (
+    <Layout>
       <Typography.Title level="2">Posts</Typography.Title>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          ref={inputRef}
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          autoFocus
-        />
-        <Button type="submit">Submit</Button>
-      </Form>     
-      <Table dataSource={dataSource} columns={columns} />
-    </div>
+      <Space>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            ref={inputRef}
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+          />
+          <Input
+            ref={inputRef}
+            type="text"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            autoFocus
+          />
+          <Input
+            ref={inputRef}
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            autoFocus
+          />
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Space>
+      <Space>
+        <Table dataSource={dataSource} columns={columns} />
+      </Space>
+    </Layout>
   );
 }
 
