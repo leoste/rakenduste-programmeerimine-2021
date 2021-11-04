@@ -49,7 +49,7 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
         autoFocus
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit">Logi sisse</Button>
     </Form>
       <Typography.Title level="2">Palun liitu meie saidiga 🥺🥺🥺🥺🥺</Typography.Title>
       <Form onSubmit={handleSubmit2}>
@@ -67,7 +67,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           autoFocus
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Registreeru</Button>
       </Form>
     </Layout>
   );

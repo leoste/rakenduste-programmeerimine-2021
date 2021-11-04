@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins= "http://localhost:3000")
-public class ItemController {
+public class TitleController {
 
     @Autowired
     ItemService itemService;

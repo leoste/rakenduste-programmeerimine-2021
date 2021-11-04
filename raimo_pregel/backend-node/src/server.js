@@ -4,13 +4,13 @@ const PORT = process.env.PORT || 3000
 const jwtAuth = require("./middleware/jwtAuth")
 require("dotenv").config()
 
-const itemRoutes = require('./routes/item');
+const titleRoutes = require('./routes/title');
 const authRoutes = require('./routes/auth');
 
 const app = express()
 app.use(express.json());
 
-app.use('/api/item', itemRoutes);
+app.use('/api/title', titleRoutes);
 app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {

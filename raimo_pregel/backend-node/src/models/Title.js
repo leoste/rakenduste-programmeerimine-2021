@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const itemSchema = new Schema({
+const titleSchema = new Schema({
   name: { type: String, required: true },
   quality: { type: Number, required: true },
   unused: { type: Boolean, default: true },
@@ -8,6 +8,6 @@ const itemSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const Item = model("Item", itemSchema)
+const Title = model("Title", titleSchema)
 
-module.exports = Item
+module.exports = Title
