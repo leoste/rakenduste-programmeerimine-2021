@@ -95,36 +95,32 @@ function Posts() {
 
   return (
     <Layout>
-      <Typography.Title level="2">Posts</Typography.Title>
-      <Space>
-        <Form onSubmit={handleSubmit}>
-          <Input
-            ref={inputRef}
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            autoFocus
-          />
-          <Input
-            ref={inputRef}
-            type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            autoFocus
-          />
-          <Input
-            ref={inputRef}
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            autoFocus
-          />
-          <Button type="submit">Submit</Button>
-        </Form>
-      </Space>
-      <Space>
-        <Table dataSource={dataSource} columns={columns} />
-      </Space>
+      <Typography.Title level="1">Posts</Typography.Title>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          ref={inputRef}
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          autoFocus
+        />
+        <Input
+          ref={inputRef}
+          type="text"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          autoFocus
+        />
+        <Input
+          ref={inputRef}
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          autoFocus
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+      <Table dataSource={dataSource} columns={columns} />
     </Layout>
   );
 }
