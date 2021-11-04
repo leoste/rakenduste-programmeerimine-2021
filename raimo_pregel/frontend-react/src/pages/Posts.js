@@ -1,4 +1,5 @@
-import { Table } from "antd";
+import { Button, Input, Table, Typography } from "antd";
+import Form from "antd/lib/form/Form";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
 import { addPost, removePost, updatePosts } from "../store/actions";
@@ -74,19 +75,19 @@ function Posts() {
     }
   ]
 
-  return (
+  return (    
     <div style={{ textAlign: "center" }}>
-      <h1>Posts</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Typography.Title level="2">Posts</Typography.Title>
+      <Form onSubmit={handleSubmit}>
+        <Input
           ref={inputRef}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           autoFocus
         />
-        <button type="submit">Submit</button>
-      </form>     
+        <Button type="submit">Submit</Button>
+      </Form>     
       <Table dataSource={dataSource} columns={columns} />
     </div>
   );
