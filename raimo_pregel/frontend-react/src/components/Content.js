@@ -1,7 +1,8 @@
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Posts from "../pages/Posts";
+import Titles from "../pages/Titles";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 import { Layout, Space, Typography } from "antd";
 
 function Content() {
@@ -16,8 +17,9 @@ function Content() {
       </Layout.Sider>
       <Switch>
         <Route exact path="/" />
-        <Route exact path="/posts" component={Posts} />
+        <Route exact path="/titles" component={Titles} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
     </Layout>
   );

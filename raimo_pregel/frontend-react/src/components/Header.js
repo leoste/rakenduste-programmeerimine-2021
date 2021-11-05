@@ -1,19 +1,42 @@
 import { Link } from "react-router-dom";
-import { Layout, Space, Typography } from "antd";
+import { Layout, Menu, Space, Typography } from "antd";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
+import { logoutUser } from '../store/actions';
 
 function Header() {
-  const [state, dispatch] = useContext(Context);
+  const [current, setCurrent] = useState(window.location.pathname.replace('/', ''))
+  const [state, dispatch] = useContext(Context)
+
+  const handleLogout = () => {
+    dispatch(logoutUser)
+  }
 
   return (
     <Layout.Header>
-      <Space align="start" size="large">
-        <Link component={Typography.Link} to="/">Avaleht</Link>      
-        <Link component={Typography.Link} to="/posts">Änksad Postitused</Link>
-        <Link component={Typography.Link} to="/login">👉 Logi sisse või 😆 "rega" juba täna!!! 👈</Link>
-        <Typography.Paragraph type="warning">{state.auth.data !== undefined ? state.auth.data.user + "is logged in" : "noone is logged in"}</Typography.Paragraph>
-      </Space>
+      <Menu theme="dark" mode="horizontal" selectedKeys={[current]}>
+        <Menu.Item key={''} onClick={e => setCurrent(e.key)}>
+          <Link component={Typography.Link} to="/">Avaleht</Link>      
+        </Menu.Item>
+        <Menu.Item key={'titles'} onClick={e => setCurrent(e.key)}>
+          <Link component={Typography.Link} to="/titles">Änksad Titleitused</Link>
+        </Menu.Item>
+        {state.auth.token && (
+          <Menu.Item key={'logout'} onClick={e => setCurrent(e.key)}>
+            <Link to="#" onClick={handleLogout}>Logout</Link>
+          </Menu.Item>
+        )}
+        {!state.auth.token && (
+          <>
+          <Menu.Item key={'login'} onClick={e => setCurrent(e.key)}>
+            <Link component={Typography.Link} to="/login">👉 Logi sisse või 😆</Link>
+          </Menu.Item>
+          <Menu.Item key={'register'} onClick={e => setCurrent(e.key)}>
+          <Link component={Typography.Link} to="/register">"rega" juba täna!!! 👈</Link>
+          </Menu.Item>
+          </>
+        )}
+      </Menu>
     </Layout.Header>    
   );
 }

@@ -1,10 +1,9 @@
 const { Schema, model } = require('mongoose')
 
 const titleSchema = new Schema({
-  name: { type: String, required: true },
-  quality: { type: Number, required: true },
-  unused: { type: Boolean, default: true },
-  color: { type: String, enum: ['red', 'green', 'blue'], default: 'green' },
+  title: { type: String, required: true },
+  authorId: { type: String, required: true },
+  lastModified: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now }
 });
 

@@ -2,9 +2,9 @@ import { Button, Input, Space, Table, Typography, Layout, Form } from "antd";
 import FormItemLabel from "antd/lib/form/FormItemLabel";
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../store";
-import { addPost, removePost, updatePosts } from "../store/actions";
+import { addTitle, removeTitle, updateTitles } from "../store/actions";
 
-function Posts() {
+function Titles() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState("");
@@ -14,52 +14,26 @@ function Posts() {
   // Ilma dependency massivita ehk ilma [] kutsub välja igal renderdusel
   // tühja massiivi dependencyna esimest korda
   // saab ka kutsuda teatud state muutustel välja
-  useEffect(() => {
-    dispatch(updatePosts([
-      {
-        id: 1,
-        title: "Test-prefetched-array-1",
-        author: "Jon Snow",
-        date: new Date(2016, 11, 23)
-      },
-      {
-        id: 2,
-        title: "Test-prefetched-array-2",
-        author: "Misato",
-        date: new Date(2017, 3, 5)
-      },
-      {
-        id: 3,
-        title: "Test-prefetched-array-3",
-        author: "LLLL testttt",
-        date: new Date(2019, 8, 17)
-      },
-      {
-        id: 4,
-        title: "Test-prefetched-array-4",
-        author: "yeah",
-        date: new Date(2019, 9, 19)
-      },
-    ]))
+  useEffect(() => {    
+    fetch('http://localhost:8081/api/title').then(res => {
+      return res.json();
+    }).then(async (data) => {
+      await dispatch(updateTitles(data))
+    })
   }, [])
 
   // Või võite panna eraldi nupu, et "Get latest from database" (Sync)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setTitle("");
-    setAuthor("");
-    setDate("");
-
-    addNewPost()
+    addNewTitle()
 
     if (inputRef.current) inputRef.current.focus();
   };
 
 
-  const addNewPost = () => {
-    const newPost = {
+  const addNewTitle = () => {
+    const newTitle = {
       id: Date.now(),
       title,
       author,
@@ -69,12 +43,12 @@ function Posts() {
     // Salvestame andmebaasi ja kui on edukas, 
     // siis teeme dispatchi ja uuendame state lokaalselt
 
-    dispatch(addPost(newPost));
+    dispatch(addTitle(newTitle));
   };
 
   console.log({ inputRef });
 
-  const dataSource = state.posts.data.map(e => { return { ...e, date: e.date.toDateString() }; }) || [];
+  const dataSource = state.titles.data.map(e => { return { ...e, date: e.date.toDateString() }; }) || [];
 
   const columns = [
     {
@@ -96,7 +70,7 @@ function Posts() {
 
   return (
     <Layout>
-      <Typography.Title level="1">Posts</Typography.Title>
+      <Typography.Title level="1">Titles</Typography.Title>
       <Form onSubmit={handleSubmit}>
         <Input
           ref={inputRef}
@@ -126,4 +100,4 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default Titles;

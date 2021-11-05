@@ -1,8 +1,8 @@
 import { createContext, useReducer } from "react";
-import { postReducer, authReducer } from "./reducer";
+import { titleReducer, authReducer } from "./reducer";
 import combineReducers from "react-combine-reducers"
 
-const initialPosts = {
+const initialTitles = {
   data: []
 }
 
@@ -12,7 +12,7 @@ const initialAuth = {
 }
 
 const [combinedReducer, initialState] = combineReducers({
-  posts: [postReducer, initialPosts],
+  titles: [titleReducer, initialTitles],
   auth: [authReducer, initialAuth]
 })
 

@@ -1,19 +1,19 @@
-import { POST_ADD, POST_REMOVE, USER_LOGIN, USER_LOGOUT } from "./actions";
+import { TITLE_ADD, TITLE_REMOVE, USER_LOGIN, USER_LOGOUT } from "./actions";
 
-const postReducer = (state, action) => {
+const titleReducer = (state, action) => {
   switch(action.type){
-    case POST_ADD:
+    case TITLE_ADD:
       return {
         ...state,
         data: state.data.concat(action.payload)
       };
-    case POST_REMOVE:
+    case TITLE_REMOVE:
       return {
         ...state,
-        data: state.data.filter(post => post.id !== action.payload)
+        data: state.data.filter(title => title.id !== action.payload)
       }
     // Kodutööna uue listi vastu võtmine maybe
-    case "POSTS_UPDATE": 
+    case "TITLES_UPDATE": 
         return {
           ...state,
           data: action.payload
@@ -42,4 +42,4 @@ const authReducer = (state, action) => {
   }
 }
 
-export { postReducer, authReducer }
+export { titleReducer, authReducer }

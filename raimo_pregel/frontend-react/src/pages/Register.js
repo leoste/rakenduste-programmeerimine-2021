@@ -33,24 +33,24 @@ function Login() {
 
   return (
     <Layout>
-    <Typography.Title level="2">Tere tulemast tagasi!!!🥰🥰🥰</Typography.Title>
-    <Form onSubmit={handleSubmit}>
-      <Input
-        ref={inputRef}
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        autoFocus
-      />
-      <Input
-        ref={inputRef}
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        autoFocus
-      />
-      <Button type="submit">Logi sisse</Button>
-    </Form>
+      <Typography.Title level="2">Palun liitu meie saidiga 🥺🥺🥺🥺🥺</Typography.Title>
+      <Form onSubmit={handleSubmit2}>
+        <Input
+          ref={inputRef}
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          autoFocus
+        />
+        <Input
+          ref={inputRef}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoFocus
+        />
+        <Button type="submit">Registreeru</Button>
+      </Form>
     </Layout>
   );
 }
