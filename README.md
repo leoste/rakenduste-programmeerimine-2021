@@ -3,8 +3,17 @@
 
 Harjutus.
 
+## Raimo mega veebika sipelgadisain.
 
-## Super veebipoe super disain.
+- 1. avaleht - lehte kaunistab vasakul pool asuv informatsioonikast ![image](https://user-images.githubusercontent.com/35530198/140507633-f95ecdc9-d7d8-4ed8-be10-c8fc018a6e08.png)
+- 2. registreeri - nagu näha, on vaja kinnitada parool ja müüa päris palju infot ![image](https://user-images.githubusercontent.com/35530198/140507716-8b7398d9-3bb3-4e38-b204-8434e0fe9de7.png)
+- 3. logi sisse - pildil on juba sisse logitud ![image](https://user-images.githubusercontent.com/35530198/140507828-d10a4e52-c127-4e45-a00a-f752663b4375.png)
+- 4. pealkirjade vaatamine - otsustasin, et minu lehel saavad kasutajad lisada ja vaadata pealkirju. üleval on lihtne form lisamiseks ning all on tabel vaatamiseks ![image](https://user-images.githubusercontent.com/35530198/140508005-1f0aa3fb-67b5-4383-bc99-f02a00069d94.png)
+
+
+
+
+## Mihkli Super veebipoe super disain.
 
 - 1. avaleht
 ![image](https://user-images.githubusercontent.com/35530198/138672561-02d27113-8984-4d08-93bf-40092270cfa8.png)
