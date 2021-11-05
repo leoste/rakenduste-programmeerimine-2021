@@ -8,48 +8,111 @@ function Login() {
   const [password, setPassword] = useState("");
   const [state, dispatch] = useContext(Context);
   const inputRef = useRef(null);
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
+    // console.log(values)
+    // setFirstName(values.firstName)
+    // setLastName(values.lastName)
+    // setEmail(values.email)
+    // setPassword(values.password)
 
-    setUsername("");
-    setPassword("");
+    // console.log(firstName)
 
-    dispatch(loginUser(username, password));
+    const user = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password
+    }
 
-    if (inputRef.current) inputRef.current.focus();
-  };
+    if (!values.firstName || !values.lastName || !values.email || !values.password || !values.confirm) {
+      setError('Please fill out all fields')
+    } else if (values.password !== values.confirm) {
+      setError('Passwords do not match!')
+    } else {
+      const res = await fetch('http://localhost:8081/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify(user),
+      })
 
-  const handleSubmit2 = (e) => {
-    e.preventDefault();
+      const returnData = await res.json()
 
-    setUsername("");
-    setPassword("");
-
-    // dispatch register user
-
-    if (inputRef.current) inputRef.current.focus();
-  };
+      if (res.ok) {
+        setError('')
+        console.log("Success! User registered!")
+      } else {
+        let errors = ''
+        if (returnData.error) {
+          errors = returnData.error
+        } else {
+          for (let i = 0; i < returnData.msg.length; i++) {
+            errors += returnData.msg[i].param[0].toUpperCase() + returnData.msg[i].param.slice(1) + ' ' + returnData.msg[i].msg + '\n'
+          }
+        }
+        setError(errors)
+      }
+    }
+  }
 
   return (
     <Layout>
       <Typography.Title level="2">Palun liitu meie saidiga 🥺🥺🥺🥺🥺</Typography.Title>
-      <Form onSubmit={handleSubmit2}>
-        <Input
-          ref={inputRef}
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autoFocus
-        />
-        <Input
-          ref={inputRef}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoFocus
-        />
-        <Button type="submit">Registreeru</Button>
+      <Form
+        name="basic"
+        style={{maxWidth: '50%', margin: 'auto'}}
+        initialValues={{ remember: true }}
+        onFinish={handleSubmit}
+        autoComplete="off"
+      >
+        <Form.Item 
+          label="First Name"
+          name="firstName"
+          required
+        >
+        <Input />
+        </Form.Item>
+        <Form.Item 
+          label="Last Name"
+          name="lastName"
+          required
+        >
+        <Input />
+        </Form.Item>
+        <Form.Item 
+          label="E-mail"
+          name="email"
+          required
+        >
+        <Input />
+        </Form.Item>
+
+        <Form.Item 
+          label="Password"
+          name="password"
+          required
+        >
+        <Input.Password />
+        </Form.Item>
+
+        <Form.Item 
+          label="Confirm Password"
+          name="confirm"
+          required
+        >
+        <Input.Password />
+        </Form.Item>
+        { error && <Typography.Text style={{whiteSpace: 'pre-wrap'}} type="danger">{ error }</Typography.Text> }
+
+        <Form.Item style={{textAlign: 'center'}}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+
       </Form>
     </Layout>
   );

@@ -25,25 +25,33 @@ function Titles() {
   // Või võite panna eraldi nupu, et "Get latest from database" (Sync)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    addNewTitle()
+    e.preventDefault()
 
-    if (inputRef.current) inputRef.current.focus();
+    const newTitle = {
+      title,
+      authorId: state.auth.user.id,
+    }
+
+    setTitle("")
+
+    addNewTitle(newTitle)
+
+    if (inputRef.current) inputRef.current.focus()
   };
 
 
-  const addNewTitle = () => {
-    const newTitle = {
-      id: Date.now(),
-      title,
-      author,
-      date
-    };
-
-    // Salvestame andmebaasi ja kui on edukas, 
-    // siis teeme dispatchi ja uuendame state lokaalselt
-
-    dispatch(addTitle(newTitle));
+  const addNewTitle = async () => {
+    const res = await fetch('http://localhost:8081/api/title/create', {
+      method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify(title),
+      })
+  
+      const returnData = await res.json()
+  
+      dispatch(addTitle(returnData))
   };
 
   console.log({ inputRef });
@@ -71,30 +79,21 @@ function Titles() {
   return (
     <Layout>
       <Typography.Title level="1">Titles</Typography.Title>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          ref={inputRef}
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          autoFocus
-        />
-        <Input
-          ref={inputRef}
-          type="text"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          autoFocus
-        />
-        <Input
-          ref={inputRef}
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          autoFocus
-        />
-        <Button type="submit">Submit</Button>
-      </Form>
+      {state.auth.token &&
+        (
+          <form onSubmit={handleSubmit}>
+            <Input
+              style={{margin: '10px', maxWidth: '50%'}}
+              ref={inputRef}
+              type="text"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              autoFocus
+            />
+            <Button htmlType="submit" type="primary">Submit</Button>
+          </form>
+        )
+      }
       <Table dataSource={dataSource} columns={columns} />
     </Layout>
   );
