@@ -40,7 +40,7 @@ function Titles() {
   };
 
 
-  const addNewTitle = async () => {
+  const addNewTitle = async (title) => {
     const res = await fetch('http://localhost:8081/api/title/create', {
       method: 'POST',
         headers: {
@@ -56,9 +56,12 @@ function Titles() {
 
   console.log({ inputRef });
 
-  const dataSource = state.titles.data.map(e => { return { ...e, date: e.date.toDateString() }; }) || [];
-
   const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
     {
       title: "Pealkiri :3",
       dataIndex: "title",
@@ -66,13 +69,18 @@ function Titles() {
     },
     {
       title: "Looja 🙏🙏🙏",
-      dataIndex: "author",
-      key: "author"
+      dataIndex: "authorId",
+      key: "authorId"
     },
     {
       title: "Loodud",
-      dataIndex: "date",
-      key: "date"
+      dataIndex: "createdAt",
+      key: "createdAt"
+    },
+    {
+      title: 'ära puuttu 😡😡😡',
+      dataIndex: 'lastModified',
+      key: 'lastModified',
     }
   ]
 
@@ -94,7 +102,7 @@ function Titles() {
           </form>
         )
       }
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={state.titles.data} columns={columns} />
     </Layout>
   );
 }

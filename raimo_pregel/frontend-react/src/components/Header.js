@@ -23,7 +23,7 @@ function Header() {
         </Menu.Item>
         {state.auth.token && (
           <Menu.Item key={'logout'} onClick={e => setCurrent(e.key)}>
-            <Link to="#" onClick={handleLogout}>Logout</Link>
+            <Link to="#" onClick={handleLogout}>❌❎☠⚔🚸🔀✝⛑❌</Link>
           </Menu.Item>
         )}
         {!state.auth.token && (

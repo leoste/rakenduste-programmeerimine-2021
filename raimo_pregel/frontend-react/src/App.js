@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Main from "./pages/Main";
 import { Layout, Space, Typography } from "antd";
 import 'antd/dist/antd.css';
 
@@ -23,7 +24,7 @@ function App() {
           </Layout.Sider>
           <Layout.Content>
             <Switch>
-              <Route exact path="/" />
+              <Route exact path="/" component={Main} />
               <Route exact path="/titles" component={Titles} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
