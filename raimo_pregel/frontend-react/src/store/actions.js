@@ -1,5 +1,6 @@
 export const TITLE_ADD = "TITLE_ADD"
 export const TITLE_REMOVE = "TITLE_REMOVE"
+export const TITLES_UPDATE = "TITLES_UPDATE"
 export const USER_LOGIN = "USER_LOGIN"
 export const USER_LOGOUT = "USER_LOGOUT"
 
@@ -15,7 +16,7 @@ export const removeTitle = id => ({
 
 // Lisada siis uus konstant selle jaoks ja muuta ka reduceris
 export const updateTitles = array => ({
-  type: "TITLES_UPDATE",
+  type: TITLES_UPDATE,
   payload: array
 })
 
